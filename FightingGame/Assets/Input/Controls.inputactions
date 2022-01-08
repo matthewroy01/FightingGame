@@ -1,0 +1,52 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "MovementControls",
+            "id": "e49d4137-a460-4e48-aece-49c8d3e50b02",
+            "actions": [
+                {
+                    "name": "MovementHor",
+                    "type": "Value",
+                    "id": "f3ec6a42-8a9e-46d5-ab4a-a6f990e51cd9",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MovementVer",
+                    "type": "Value",
+                    "id": "4c6f3460-89e4-424d-9b35-62a81ac6c212",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fc742d04-5cdc-4eec-9338-abdbb7f52b71",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementHor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "101246c4-8f34-40ee-b8bd-b713654c6407",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementVer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
