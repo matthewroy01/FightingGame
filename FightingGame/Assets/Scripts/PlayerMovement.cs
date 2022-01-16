@@ -5,32 +5,27 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Controls controls;
-    private float inputMovementHor, inputMovementVer;
+    [SerializeField] private InputManager.InputManager inputManager;
 
     private void Awake()
     {
-        InitializeControls();
+        inputManager.performedLightAttack.AddListener(LightAttack);
+        inputManager.performedHeavyAttack.AddListener(HeavyAttack);
+        inputManager.performedLeftStick.AddListener(LeftStickChanged);
     }
 
-    private void InitializeControls()
+    private void LightAttack()
     {
-        controls = new Controls();
-        controls.Enable();
-
-        controls.MovementControls.MovementHor.performed += context =>
-        {
-            inputMovementHor = context.ReadValue<float>();
-        };
+        Debug.Log("Light attack!");
     }
 
-    private void Update()
+    private void HeavyAttack()
     {
-        GetInput();
+        Debug.Log("Heavy attack!");
     }
 
-    private void GetInput()
+    private void LeftStickChanged()
     {
-
+        Debug.Log("Left stick changed!");
     }
 }
