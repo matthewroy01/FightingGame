@@ -10,9 +10,9 @@ namespace InputManager
     {
         private Controls controls;
 
-        [HideInInspector] public UnityEvent performedLightAttack { get; private set; }
-        [HideInInspector] public UnityEvent performedHeavyAttack { get; private set; }
-        [HideInInspector] public UnityEvent performedLeftStick { get; private set; }
+        [HideInInspector] public UnityEvent performedLightAttack = new UnityEvent();
+        [HideInInspector] public UnityEvent performedHeavyAttack = new UnityEvent();
+        [HideInInspector] public UnityEvent performedLeftStick = new UnityEvent();
 
         public CustomAxis axisLeftStick;
 
@@ -85,9 +85,9 @@ namespace InputManager
             // if the axis' value has changed since last time, update the value and invoke an event
             if (previousValue != _value)
             {
-                value = _value;
+                previousValue = value;
 
-                previousValue = _value;
+                value = _value;
 
                 performedLeftStick.Invoke();
             }

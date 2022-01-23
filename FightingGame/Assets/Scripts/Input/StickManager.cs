@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace InputManager
 {
-    public class AxisManager : MonoBehaviour
+    public class StickManager : MonoBehaviour
     {
         [SerializeField] private InputManager inputManager;
 
@@ -19,7 +19,7 @@ namespace InputManager
         private const float ONE_EIGHTH = 0.125f;
         private const float DEAD_ZONE = 0.2f;
 
-        [HideInInspector] public UnityEvent performedLeftStick { get; private set; }
+        [HideInInspector] public UnityEvent performedLeftStick = new UnityEvent();
 
         private void Awake()
         {
@@ -82,13 +82,12 @@ namespace InputManager
                     }
 
                     if (tmp != previousDirection)
-                    {                        
+                    {
                         // update the direction
+                        previousDirection = direction;
                         direction = tmp;
 
-                        previousDirection = direction;
                         performedLeftStick.Invoke();
-
                     }
                     return;                    
                 }
@@ -109,6 +108,19 @@ namespace InputManager
         public InputDirection GetDirection()
         {
             return direction;
+        }
+
+        public bool GetJumpInput()
+        {
+            if (direction == InputDirection.ur || direction == InputDirection.u || direction == InputDirection.ul)
+            {
+                if (previousDirection != InputDirection.ur && previousDirection != InputDirection.u && previousDirection != InputDirection.ul)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 

@@ -8,7 +8,7 @@ namespace InputManager
     public class InputDisplay : MonoBehaviour
     {
         private InputManager inputManager;
-        private AxisManager axisManager;
+        private StickManager axisManager;
 
         [Header("Input Sprites")]
         [SerializeField] private Sprite straightArrow;
@@ -26,7 +26,7 @@ namespace InputManager
         private void Awake()
         {
             inputManager = FindObjectOfType<InputManager>();
-            axisManager = FindObjectOfType<AxisManager>();
+            axisManager = FindObjectOfType<StickManager>();
 
             SubscribeToEvents();
         }
@@ -143,6 +143,10 @@ namespace InputManager
         {
             InputDisplayDuo tmp = Instantiate(duoPrefab, layoutGroup.transform);
             tmp.transform.SetAsFirstSibling();
+            if (layoutGroup.transform.childCount > 11.0f)
+            {
+                Destroy(layoutGroup.transform.GetChild(layoutGroup.transform.childCount - 1).gameObject);
+            }
             tmp.AssignImages(inputData.directionSprite, inputData.directionSpriteAngle, inputData.attackSprites);
             return tmp;
         }

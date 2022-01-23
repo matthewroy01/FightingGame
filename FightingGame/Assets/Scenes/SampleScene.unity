@@ -123,6 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28279932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 28279933}
+  m_Layer: 0
+  m_Name: GroundChecks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &28279933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28279932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 921254694}
+  - {fileID: 1841754287}
+  m_Father: {fileID: 1849317910}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128577898
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +306,7 @@ GameObject:
   - component: {fileID: 502560034}
   - component: {fileID: 502560035}
   - component: {fileID: 502560036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArenaFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +528,7 @@ GameObject:
   - component: {fileID: 670445422}
   - component: {fileID: 670445423}
   - component: {fileID: 670445424}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArenaWallRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +637,7 @@ GameObject:
   - component: {fileID: 744218902}
   - component: {fileID: 744218903}
   - component: {fileID: 744218904}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArenaWallLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -837,6 +869,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817812403}
   m_CullTransparentMesh: 1
+--- !u!1 &921254693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 921254694}
+  m_Layer: 0
+  m_Name: Ground Check 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &921254694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921254693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.25, y: -1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 28279933}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1037042279
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +948,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e236566cad4a6a4e91ea99ea19731c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   inputManager: {fileID: 0}
+  stickManager: {fileID: 0}
+  movementSpeed: 0
+  movementDeadZone: 0
+  jumpForce: 0
+  groundCheckDistance: 0
+  groundChecks: []
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  landedOnGround:
+    m_PersistentCalls:
+      m_Calls: []
+  leftGround:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1037042282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1583,6 +1661,36 @@ MonoBehaviour:
   heavyAttack: {fileID: 21300000, guid: bea19d5dcff3faf4eb51a25eaf08d2fd, type: 3}
   layoutGroup: {fileID: 1586942754}
   duoPrefab: {fileID: 1187820829903060656, guid: bb73b9c9c4ab6ef44bff2b82572ab4c3, type: 3}
+--- !u!1 &1841754286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1841754287}
+  m_Layer: 0
+  m_Name: Ground Check 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1841754287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841754286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: -1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 28279933}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1849317909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1618,6 +1726,7 @@ Transform:
   - {fileID: 1188541192}
   - {fileID: 1259235982}
   - {fileID: 2041360220}
+  - {fileID: 28279933}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1633,7 +1742,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e236566cad4a6a4e91ea99ea19731c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 1849317913}
   inputManager: {fileID: 1849317914}
+  stickManager: {fileID: 1849317912}
+  movementSpeed: 6
+  movementDeadZone: 0.2
+  jumpForce: 850
+  groundCheckDistance: 0.05
+  groundChecks:
+  - {fileID: 921254694}
+  - {fileID: 1841754287}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  landedOnGround:
+    m_PersistentCalls:
+      m_Calls: []
+  leftGround:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1849317912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,11 +1770,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1849317909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8772b6a13eda0fc4e9d46aa1939afda9, type: 3}
+  m_Script: {fileID: 11500000, guid: 13374a2ba98f7da4e9301ba931f93da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 1849317914}
   direction: 0
+  performedLeftStick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &1849317913
 Rigidbody2D:
   serializedVersion: 4
@@ -1663,7 +1793,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1681,6 +1811,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bbcd7eb92b8514a8b9bd7059ab04bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  performedLightAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  performedHeavyAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  performedLeftStick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1901629450
 GameObject:
   m_ObjectHideFlags: 0
