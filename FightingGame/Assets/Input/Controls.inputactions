@@ -25,7 +25,7 @@
                     "name": "LeftStick",
                     "type": "Value",
                     "id": "ec74f970-06e7-4cfa-8618-c6c722f90937",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -57,6 +57,17 @@
                     "name": "",
                     "id": "a0d6612d-5992-4db1-a91a-88ee0694098a",
                     "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f50d0ee-284c-4dec-bfc5-e028c0a901fb",
+                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

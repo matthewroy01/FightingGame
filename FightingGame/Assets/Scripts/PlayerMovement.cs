@@ -39,18 +39,13 @@ public class PlayerMovement : MonoBehaviour
         stickManager.performedLeftStick.AddListener(LeftStickChangedEight);
 
         leftGround.AddListener(delegate { initiatedJump = false; } );
+        landedOnGround.AddListener(delegate { Jump(); } );
     }
 
     private void Update()
     {
         CheckGround();
-        //AdjustDrag();
-    }
-
-    private void FixedUpdate()
-    {
         Move();
-        //TerminalVelocities();
     }
 
     private void LeftStickChanged()
@@ -60,10 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void LeftStickChangedEight()
     {
-        if (stickManager.GetJumpInput() && grounded)
-        {
-            Jump();
-        }
+        Jump();
     }
 
     private void CheckGround()
@@ -80,30 +72,60 @@ public class PlayerMovement : MonoBehaviour
 
         if (toGround)
         {
-            if (!grounded)
+            bool previousGrounded = grounded;
+            grounded = true;
+
+            if (!previousGrounded)
             {
                 landedOnGround.Invoke();
             }
-
-            grounded = true;
         }
         else
         {
-            if (grounded)
+            bool previousGrounded = grounded;
+            grounded = false;
+
+            if (previousGrounded)
             {
                 leftGround.Invoke();
             }
-
-            grounded = false;
         }
     }
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0.0f);
-        rb.drag = 0.0f;
-        initiatedJump = true;
-        rb.AddForce(Vector2.up * jumpForce);
+        if (grounded && !initiatedJump)
+        {
+            float velocity = 0.0f;
+
+            switch (movementDirection)
+            {
+                case FightingGameInput.InputDirection.ul:
+                {
+                    velocity = movementSpeed * -1;
+                    break;
+                }
+                case FightingGameInput.InputDirection.ur:
+                {
+                    velocity = movementSpeed;
+                    break;
+                }
+                case FightingGameInput.InputDirection.u:
+                {
+                    velocity = 0.0f;
+                    break;
+                }
+                default:
+                {
+                    return;
+                }
+            }
+
+            rb.velocity = new Vector2(velocity, 0.0f);
+
+            initiatedJump = true;
+            rb.AddForce(Vector2.up * jumpForce);
+        }
     }
 
     private void Move()
@@ -111,29 +133,21 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)
         {
             float velocity = 0.0f;
-            float hindrance = 1.0f;
-
-            if (!grounded)
-            {
-                hindrance = aerialForceMultiplier;
-            }
 
             switch (movementDirection)
             {
                 case FightingGameInput.InputDirection.l:
                 case FightingGameInput.InputDirection.ul:
-                    //case FightingGameInput.InputDirection.dl:
-                    {
-                        velocity = movementSpeed * hindrance * -1;
-                        break;
-                    }
+                {
+                    velocity = movementSpeed * -1;
+                    break;
+                }
                 case FightingGameInput.InputDirection.r:
                 case FightingGameInput.InputDirection.ur:
-                    //case FightingGameInput.InputDirection.dr:
-                    {
-                        velocity = movementSpeed * hindrance;
-                        break;
-                    }
+                {
+                    velocity = movementSpeed;
+                    break;
+                }
             }
 
             rb.velocity = new Vector2(velocity, rb.velocity.y);

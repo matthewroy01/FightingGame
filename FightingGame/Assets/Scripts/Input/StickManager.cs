@@ -17,7 +17,7 @@ namespace FightingGameInput
 
         private const float TWO_PI = 6.28318531f;
         private const float ONE_EIGHTH = 0.125f;
-        private const float DEAD_ZONE = 0.2f;
+        private const float DEAD_ZONE = 0.5f;
 
         [HideInInspector] public UnityEvent performedLeftStick = new UnityEvent();
 
