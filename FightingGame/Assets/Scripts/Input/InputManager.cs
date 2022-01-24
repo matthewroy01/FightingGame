@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
-namespace InputManager
+namespace FightingGameInput
 {
     public class InputManager : MonoBehaviour
     {
@@ -26,19 +26,9 @@ namespace InputManager
             controls = new Controls();
             controls.Enable();
 
-            // initialize unity events
-            InitializeEvents();
-
             // initialize inputs
             InitializeButtons();
             InitializeAxes();
-        }
-
-        private void InitializeEvents()
-        {
-            performedLightAttack = new UnityEvent();
-            performedHeavyAttack = new UnityEvent();
-            performedLeftStick = new UnityEvent();
         }
 
         private void InitializeButtons()

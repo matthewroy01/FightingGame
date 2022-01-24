@@ -911,6 +911,8 @@ GameObject:
   - component: {fileID: 1037042283}
   - component: {fileID: 1037042282}
   - component: {fileID: 1037042281}
+  - component: {fileID: 1037042285}
+  - component: {fileID: 1037042284}
   m_Layer: 0
   m_Name: SwordyMcSlash
   m_TagString: Untagged
@@ -953,6 +955,8 @@ MonoBehaviour:
   stickManager: {fileID: 0}
   movementSpeed: 0
   movementDeadZone: 0
+  terminalVelocityX: 0
+  aerialForceMultiplier: 0
   jumpForce: 0
   groundCheckDistance: 0
   groundChecks: []
@@ -1002,6 +1006,44 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1037042284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037042279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13374a2ba98f7da4e9301ba931f93da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputManager: {fileID: 0}
+  direction: 0
+  performedLeftStick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1037042285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037042279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56bbcd7eb92b8514a8b9bd7059ab04bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  performedLightAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  performedHeavyAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  performedLeftStick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1188541191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,6 +1789,8 @@ MonoBehaviour:
   stickManager: {fileID: 1849317912}
   movementSpeed: 6
   movementDeadZone: 0.2
+  terminalVelocityX: 0
+  aerialForceMultiplier: 1
   jumpForce: 850
   groundCheckDistance: 0.05
   groundChecks:
@@ -1794,7 +1838,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fc8ef8dd2f0ea3a4a88620f745461609, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

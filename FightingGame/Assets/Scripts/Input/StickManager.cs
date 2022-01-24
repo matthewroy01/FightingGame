@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace InputManager
+namespace FightingGameInput
 {
     public class StickManager : MonoBehaviour
     {
